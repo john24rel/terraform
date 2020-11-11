@@ -4,7 +4,7 @@ resource "aws_instance" "ubuntu" {
     associate_public_ip_address = "true"
     key_name = "${aws_key_pair.ubuntu.key_name}"
     user_data = "${file("userdata.sh")}"
-    availability_zone = "us-east-1e"
+    availability_zone = "us-east-1a"
     vpc_security_group_ids = ["${aws_security_group.ubuntu.name}"]
     tags = {
         Name = "Ubuntu"

@@ -17,6 +17,13 @@ resource "aws_security_group" "ubuntu" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   ingress {
+    description = "IMAP"
+    from_port   = 143
+    to_port     = 143
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  ingress {
     description = "APACHE"
     from_port   = 80
     to_port     = 80
@@ -24,9 +31,16 @@ resource "aws_security_group" "ubuntu" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   ingress {
-    description = "TELNET"
+    description = "SMTP"
     from_port   = 25
     to_port     = 25
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  ingress {
+    description = "TELNET"
+    from_port   = 23
+    to_port     = 23
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
