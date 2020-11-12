@@ -1,13 +1,10 @@
-resource "aws_instance" "ubuntu" {
-	ami = "ami-0739f8cdb239fe9ae"
+resource "aws_instance" "Ubuntu" {
+	ami = ""
 	instance_type = "t2.micro"
     associate_public_ip_address = "true"
-    key_name = "${aws_key_pair.ubuntu.key_name}"
+    key_name = "${}"
     user_data = "${file("userdata.sh")}"
-    availability_zone = "us-east-1a"
-    vpc_security_group_ids = ["${aws_security_group.ubuntu.name}"]
-    tags = {
-        Name = "Ubuntu"
-        Enviroment = "Dev"
+    vpc_security_group_ids = ["${}"]
+    tags ={
+        Name = Ubuntu
     }
-}    
