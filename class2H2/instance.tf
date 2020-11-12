@@ -15,3 +15,8 @@ resource "aws_iam_role_policy_attachment" "ec2_attach" {
   policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
 
 }
+resource "aws_volume_attachment" "ebs_att" {
+device_name = "/dev/sdi"
+volume_id = "${aws_ebs_volume.centos6.id}"
+instance_id = "${aws_instance.centos6.id}"
+}
