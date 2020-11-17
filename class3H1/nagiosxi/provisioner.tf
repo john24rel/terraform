@@ -1,0 +1,36 @@
+resource "aws_instance" "nagiosxi" {
+  ami           = "${data.aws_ami.centos.id}"
+  availability_zone = "${data.aws_availability_zones.available.names[0]}"
+  associate_public_ip_address = true
+  instance_type = "t2.medium"
+  vpc_security_group_ids = ["${aws_security_group.nagiosxi.id}"]
+  key_name = "${aws_key_pair.nagiosxi.key_name}"
+  tags = {
+    Name = "nagiosxi"
+  }
+}
+
+resource "null_resource" "remote" {
+  triggers = {
+    always_run = "${timestamp()}"
+  }
+  
+  provisioner "remote-exec" {
+    connection {
+      type        = "ssh"
+      user        = "centos"
+      private_key = "${file("~/.ssh/id_rsa")}"
+      host        = "${aws_instance.nagiosxi.public_ip}"
+    }
+
+    inline = [
+    "sudo yum install https://repo.nagios.com/nagios/7/nagios-repo-7-4.el7.noarch.rpm -y",
+    "sudo yum install epel-release nagiosxi net-snmp  -y",
+    "sudo cp -p /etc/snmp/snmpd.conf snmpd.conf.dist",
+    "sudo echo 'rocommunity public' > /etc/snmp/snmpd.conf | sudo echo 'syslocation here' >> /etc/snmp/snmpd.conf | sudo  echo 'syscontact root@localhost' >> /etc/snmp/snmpd.conf",
+    "sudo systemctl start snmpd",
+    "sudo snmpwalk -v 1 -c public -O e 127.0.0.1",
+    ]
+
+  }
+}
