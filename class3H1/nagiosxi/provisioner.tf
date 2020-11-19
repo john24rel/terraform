@@ -27,8 +27,8 @@ resource "null_resource" "remote" {
     "sudo yum install https://repo.nagios.com/nagios/7/nagios-repo-7-4.el7.noarch.rpm -y",
     "sudo yum install epel-release nagiosxi net-snmp  -y",
     "sudo systemctl start snmpd",
-    "sudo rsync -a /etc/snmp/snmpd.conf snmpd.conf.dist",
-    "sudo echo 'rocommunity public \nsyslocation here \nsyscontact root@localhost' > /tmp/snmpd.conf",
+    "sudo rsync -a /etc/snmp/snmpd.conf /tmp/snmpd.conf.dist",
+    "sudo echo -e 'rocommunity public \nsyslocation here \nsyscontact root@localhost' > /tmp/snmpd.conf",
     "sudo mv /tmp/snmpd.conf  /etc/snmp/",
     "sudo snmpwalk -v 1 -c public -O e 127.0.0.1",
     ]
