@@ -39,7 +39,7 @@ resource "null_resource" "remote" {
       "sudo mv /tmp/r1soft.repo /etc/yum.repos.d/",
       "sudo yum install serverbackup-enterprise -y ",
       "sudo serverbackup-setup --user john --pass jbnl",
-      "sudo /etc/init.d/cdp-server restart",
+      "sudo /etc/init.d/cdp-server start",
       "sudo serverbackup-setup --http-port 80 --https-port 443",
       "sudo /etc/init.d/cdp-server restart",
     ]
