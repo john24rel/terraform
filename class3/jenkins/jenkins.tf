@@ -6,6 +6,7 @@ resource "aws_instance" "centos" {
   tags = {
     Name = "HelloWorld"
   }
+  
 }
 
 resource "null_resource" "remote" {

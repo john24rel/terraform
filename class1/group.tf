@@ -1,31 +1,14 @@
-resource "aws_iam_group" "Developer" {
-  name = "Developer"
+resource "aws_iam_group" "developers" {
+  name = "developers"
   path = "/"
 }
 
-resource "aws_iam_group" "Management" {
-  name = "Management"
-  path = "/"
-}
-
-resource "aws_iam_group_membership" "Developer_team" {
-  name = "Developer-group-membership"
+resource "aws_iam_group_membership" "developers_team" {
+  name = "developers-group-membership"
 
   users = [
-    "${aws_iam_user.Tim.name}",
-    "${aws_iam_user.Bob.name}",
-    "${aws_iam_user.Ben.name}",
+    "${aws_iam_user.tim.name}",
   ]
 
-  group = "${aws_iam_group.Developer.name}"
-}
-
-resource "aws_iam_group_membership" "Managment_team" {
-  name = "Managment-group-membership"
-
-  users = [
-    "${aws_iam_user.Ben.name}",
-  ]
-
-  group = "${aws_iam_group.Management.name}"
+  group = "${aws_iam_group.developers.name}"
 }

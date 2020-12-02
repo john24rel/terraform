@@ -8,6 +8,14 @@ resource "aws_instance" "web" {
     availability_zone = "us-east-1a"
 }
 
+
+resource "aws_instance" "web2" {
+    ami = "ami-02354e95b39ca8dec"
+	instance_type = "t2.micro"
+}
+
+
+
 resource "aws_ebs_volume" "example" {
 availability_zone = "us-east-1a"
 size = 100
