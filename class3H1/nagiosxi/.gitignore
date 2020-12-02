@@ -27,3 +27,10 @@ override.tf.json
 
 # Include tfplan files to ignore the plan output of command: terraform plan -out=tfplan
 # example: *tfplan*
+# Yum install epel-release
+# Yum install unzip wget python3-pip -y
+# wget https://releases.hashicorp.com/terraform/0.11.13/terraform_0.11.13_linux_amd64.zip
+
+# Unzip the terraform zip
+# And mv to /usr/bin
+# Terraform -v
