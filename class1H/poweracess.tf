@@ -1,5 +1,5 @@
 resource "aws_iam_group_policy" "poweruser" {
-  name        = "poweraccess"
+  name  = "poweraccess"
   group = "${aws_iam_group.Infosec.name}"
 
   policy = <<EOF
@@ -30,4 +30,3 @@ resource "aws_iam_group_policy" "poweruser" {
 }
 EOF
 }
-

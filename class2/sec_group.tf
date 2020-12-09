@@ -9,6 +9,7 @@ resource "aws_security_group" "class2" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
+
   ingress {
     description = "TLS from VPC"
     from_port   = 22
@@ -16,6 +17,7 @@ resource "aws_security_group" "class2" {
     protocol    = "tcp"
     cidr_blocks = ["50.194.68.237/32"]
   }
+
   ingress {
     description = "TLS from VPC"
     from_port   = 22
@@ -23,6 +25,7 @@ resource "aws_security_group" "class2" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
+
   ingress {
     description = "TLS from VPC"
     from_port   = 80
@@ -30,6 +33,7 @@ resource "aws_security_group" "class2" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
+
   ingress {
     description = "TLS from VPC"
     from_port   = 25

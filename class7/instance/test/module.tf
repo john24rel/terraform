@@ -2,10 +2,10 @@ module "db" {
 	source = "../"
 	region = "us-east-2"
 	subnet_ids = [
-		"subnet-09e046e79485b9194", 
-		"subnet-0d27bd3f9c6a10988", 
-		"subnet-0533f931432ff4966"
-	]
+	    "subnet-0ef4a790d04655f17", 
+		"subnet-042f3148fa63ea57e", 
+		"subnet-0c1faf9f9e20d6aaa",
+    ]
 	security_group_name = "db"
 	allowed_hosts = [
 		"0.0.0.0/0"
@@ -20,15 +20,15 @@ module "db" {
     allocated_storage = "20"
 }
 
-output "region" {
-	value = "${module.db.region}"
-}
-output "subnet_list" {
-	value = "${module.db.subnet_list}"
-}
-output "allowed_hosts" {
-	value = "${module.db.allowed_hosts}"
-}
-output "DB_NAME" {
-	value = "${module.db.DB_NAME}"
-}
+# output "region" {
+# 	value = "${module.db.region}"
+# }
+# output "subnet_list" {
+# 	value = "${module.db.subnet_list}"
+# }
+# output "allowed_hosts" {
+# 	value = "${module.db.allowed_hosts}"
+# }
+# output "DB_NAME" {
+# 	value = "${module.db.DB_NAME}"
+# }

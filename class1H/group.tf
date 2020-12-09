@@ -2,6 +2,7 @@ resource "aws_iam_group" "Infosec" {
   name = "Infosec"
   path = "/"
 }
+
 resource "aws_iam_group_membership" "Infosec" {
   name = "Infosec-group-membership"
 
@@ -14,10 +15,7 @@ resource "aws_iam_group_membership" "Infosec" {
   group = "${aws_iam_group.Infosec.name}"
 }
 
-
 resource "aws_iam_group_policy_attachment" "power" {
-  group      = "${aws_iam_group.Infosec.name}",
+  group      = "${aws_iam_group.Infosec.name}"
   policy_arn = "arn:aws:iam::aws:policy/PowerUserAccess"
 }
-
-
