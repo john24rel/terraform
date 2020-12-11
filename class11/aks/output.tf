@@ -1,39 +1,50 @@
-output "cluster_id" {
-  value = module.aks.cluster_id
-}
 output "client_certificate" {
-  value = module.aks.client_certificate
+  value = azurerm_kubernetes_cluster.example.kube_config.0.client_certificate
 }
+
 output "kube_config" {
-  value = module.aks.kube_config
+  value = azurerm_kubernetes_cluster.example.kube_config_raw
 }
+output "cluster_id" {
+  value = azurerm_kubernetes_cluster.example.id
+}
+
 output "cluster_name" {
-  value = module.aks.cluster_name
+  value = azurerm_kubernetes_cluster.example.name
 }
+
 output "client_key" {
-  value = module.aks.client_key
+  value = azurerm_kubernetes_cluster.example.kube_config[0].client_key
 }
+
 output "client_certificate_output" {
-  value = module.aks.client_certificate_output
+  value = azurerm_kubernetes_cluster.example.kube_config[0].client_certificate
 }
+
 output "cluster_ca_certificate" {
-  value = module.aks.cluster_ca_certificate
+  value = azurerm_kubernetes_cluster.example.kube_config[0].cluster_ca_certificate
 }
+
 output "host" {
-  value = module.aks.host
+  value = azurerm_kubernetes_cluster.example.kube_config[0].host
 }
+
 output "username" {
-  value = module.aks.username
+  value = azurerm_kubernetes_cluster.example.kube_config[0].username
 }
+
 output "password" {
-  value = module.aks.password
+  value = azurerm_kubernetes_cluster.example.kube_config[0].password
 }
+
 output "raw_kube_config" {
-  value = module.aks.raw_kube_config
+  value = azurerm_kubernetes_cluster.example.kube_config_raw
 }
+
 output "location" {
-  value = module.aks.location
+  value = azurerm_kubernetes_cluster.example.location
 }
+
 output "kube_config_raw" {
-  value = module.aks.kube_config_raw
+  value = azurerm_kubernetes_cluster.example.kube_config_raw
 }
